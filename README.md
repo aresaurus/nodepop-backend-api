@@ -1,6 +1,6 @@
 # Nodepop
 
-Nodepop is an API for an e-commerce app that allow users to sell and buy second-hand products. This CRUD API has been created using Node.js, Express and mongoDB, and it allows you to create, edit, delete and filter ads. Each add follows a name, price, photo, tags and sale (boolean value that informs if an item is for sale or purchase)) schema. MongoDB is used to store this data in a database.
+Nodepop is an API for an e-commerce app that allow users to sell and buy second-hand products. This CRUD API has been created using Node.js, Express and mongoDB, and it allows you to create, edit, delete and filter ads. Each ad follows a name, price, photo, tags and sale (boolean value that informs if an item is for sale or purchase)) schema. MongoDB is used to store this data in a database.
 
 ## 1st step: install mongoDB
 mongoDB must be installed in your computer to use this API. To do this:
