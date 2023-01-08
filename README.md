@@ -29,3 +29,23 @@ mongoDB must be installed in your computer to use this API. To do this:
 
 # API methods
 This API uses HTTP methods (GET and POST) to access the items stored in the database.
+You can find the full list of ads here: http://localhost:3000/api/ads
+
+### POST method
+Use [Postman](https://web.postman.co/) to update this list or add a new ad. Make sure to select <strong>POST</strong>, <strong>raw</strong> and <strong>JSON</strong>. The schema must be as following:
+
+    { 
+      "name": "name of the item",
+      "price": number,
+      "photo": "photo.png",
+      "tags": [ "example1", "example2"],
+      "sale": true/false
+     }
+     
+### GET queries
+- You can filter by name: http://localhost:3000/api/ads/?name=office%20chair
+- You can check which items are for sale: http://localhost:3000/api/ads/?sale=true
+- You can filter items by price: http://localhost:3000/api/ads/?price=20-50 (to see items with values between 20 and 50
+- You can search items by tag: http://localhost:3000/api/ads/?tags=mobile
+
+* For now, the only tags available are lifestyle, work, mobile and motor.
