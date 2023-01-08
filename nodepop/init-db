@@ -1,0 +1,47 @@
+const readline = require('readline');
+const connection = require('./lib/connectMongoose')
+const Ad = require('./models/Ad');
+
+async function main() {
+
+  const userInput = await userConfirmation('Are you sure you wish to delete this database? [y/n]')
+  if (!userInput) {
+    process.exit();
+  }
+
+  await initAd();
+
+  connection.close();
+}
+
+main().catch(err => console.log('Error:', err));
+
+async function initAd() {
+  const result = await Ad.deleteMany();
+  console.log(`${result.deletedCount} ads deleted.`);
+
+  const inserted = await Ad.insertMany([
+    {name: "office chair", price: 99, photo: "chair-photo", tags: "work", sale: false},
+    {name: "electric scooter", price: 300, photo: "electric-scooter-photo", tags: "motor", sale: true},
+    {name: "iphone-13", price: 699, photo: "iphone-photo", tags: "mobile", sale: true},
+    {name: "yoga mat", price: 25, photo: "yoga-mat-photo", tags: "lifestyle", sale: true},
+  ]);
+  console.log(`${inserted.length} ads created.`)
+}
+
+function userConfirmation(text) {
+  return new Promise((resolve, reject) => {
+    const interface = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+    interface.question(text, answer => {
+      interface.close();
+      if (answer.toLowerCase() === 'yes') {
+        resolve(true);
+        return;
+      }
+      resolve(false);
+    })
+  })
+}
